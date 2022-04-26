@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -88,6 +89,8 @@ public class ListToBusiness extends Fragment implements SearchView.OnQueryTextLi
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+                InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService
+                        (Context.INPUT_METHOD_SERVICE); keyboard.hideSoftInputFromWindow(binding.searchView.getWindowToken(), 0);
                 businessesArrayList = new ArrayList<>();
                 if (ActivityCompat.checkSelfPermission(AppContext.getMyApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getUbicacion();
