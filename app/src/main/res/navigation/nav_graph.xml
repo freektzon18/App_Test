@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listToBusiness">
+    <fragment
+        android:id="@+id/listToBusiness"
+        android:name="com.example.app_test.ListToBusiness"
+        android:label="fragment_list_to_business"
+        tools:layout="@layout/fragment_list_to_business" >
+        <action
+            android:id="@+id/action_listToBusiness_to_mapDetailFragment"
+            app:destination="@id/mapDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapDetailFragment"
+        android:name="com.example.app_test.UI.detail.MapDetailFragment"
+        android:label="fragment_map_detail"
+        tools:layout="@layout/fragment_map_detail" >
+        <action
+            android:id="@+id/action_mapDetailFragment_to_listToBusiness3"
+            app:destination="@id/listToBusiness" />
+        <argument
+            android:name="businesses"
+            app:argType="com.example.app_test.data.response.Businesses" />
+    </fragment>
+</navigation>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="businesses"
+            type="com.example.app_test.data.response.Businesses" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".UI.detail.MapDetailFragment"
+        android:background="@color/colorPrimary"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:mapType="normal"
+                app:cameraZoom="10"
+                tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:text="@{businesses.name}"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:textColor="#CEB6ED"
+                    android:textSize="@dimen/_17ssp"
+                    tools:text="Nombre"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_weight=".7"
+                    />
+
+                <TextView
+                    android:id="@+id/precio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:text='@{businesses.price==null?"S/Precio":"Precio: "+businesses.price }'
+                    tools:text="calificacion"
+                    android:textColor="#FDD603"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_weight=".3"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_10ssp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text='@{businesses.phone.isEmpty ? "S/Telefono" : "Telefono: "+businesses.phone }'
+                tools:text="Telefono"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/textCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginStart="@dimen/_4ssp"
+                android:text='@{"Categoria: "+businesses.getCategorias()}'
+                android:includeFontPadding="false"
+                android:textColor="#4B5C83"
+                tools:text="Categoria"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_12ssp"
+                />
+
+            <TextView
+                android:id="@+id/textDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:includeFontPadding="false"
+                android:layout_marginStart="@dimen/_4ssp"
+                android:textColor="#9ACD01"
+                android:textSize="@dimen/_14ssp"
+                android:padding="@dimen/_4ssp"
+                tools:text="Direccion"
+                android:text='@{businesses.location.address1+" "+businesses.location.city+" "+businesses.location.state}'
+                />
+
+            <TextView
+                android:id="@+id/calificacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:includeFontPadding="false"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:maxLines="1"
+                android:padding="@dimen/_10sdp"
+                android:text='@{"Calificacion: "+Double.toString(businesses.rating)}'
+                tools:text="calificacion"
+                android:textColor="#FDD603"
+                android:layout_gravity="end"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

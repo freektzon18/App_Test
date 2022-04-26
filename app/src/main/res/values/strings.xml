@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">App_Test</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="businesses">Businesses</string>
+    <string name="detalle">Detalle</string>
+    <string name="buscar">Buscar</string>
+    <string name="serchview">Busca negocios</string>
+    <string name="dialog_message">No hay negocios disponibles.</string>
+    <string name="miubicacion">Mi ubicacion</string>
+</resources>
